@@ -67,7 +67,7 @@ type StyleInfoConfiguration struct {
 type OriginalResourceProtect struct {
 	_ struct{} `type:"structure"`
 
-	Enable *bool `locationName:"Enable" type:"bool"`
+	Enable *bool `locationName:"Enable" type:"boolean"`
 }
 
 const opGetBucketStyleConfig = "GetBucketStyleConfig"

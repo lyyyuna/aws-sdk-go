@@ -8962,6 +8962,9 @@ type CreateBucketConfiguration struct {
 	// Specifies the region where the bucket will be created. If you don't specify
 	// a region, the bucket will be created in US Standard.
 	LocationConstraint *string `type:"string" enum:"BucketLocationConstraint"`
+
+	// Specifies whether to create cdn domain
+	NoDomain *bool `locationName:"NoDomain" type:"boolean"`
 }
 
 // String returns the string representation
