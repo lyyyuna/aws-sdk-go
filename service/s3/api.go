@@ -12713,45 +12713,11 @@ type GetObjectAttributesInput struct {
 	PartNumberMarker *int64 `location:"header" locationName:"x-amz-part-number-marker" type:"integer"`
 }
 
-// String returns the string representation
-func (s GetObjectAttributesInput) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s GetObjectAttributesInput) GoString() string {
-	return s.String()
-}
-
-// SetBucket sets the Bucket field's value.
-func (s *GetObjectAttributesInput) SetBucket(v string) *GetObjectAttributesInput {
-	s.Bucket = &v
-	return s
-}
-
 func (s *GetObjectAttributesInput) getBucket() (v string) {
 	if s.Bucket == nil {
 		return v
 	}
 	return *s.Bucket
-}
-
-// SetKey sets the Key field's value.
-func (s *GetObjectAttributesInput) SetKey(v string) *GetObjectAttributesInput {
-	s.Key = &v
-	return s
-}
-
-// SetMaxParts sets the MaxParts field's value.
-func (s *GetObjectAttributesInput) SetMaxParts(v int64) *GetObjectAttributesInput {
-	s.MaxParts = &v
-	return s
-}
-
-// SetPartNumberMarker sets the PartNumberMarker field's value.
-func (s *GetObjectAttributesInput) SetPartNumberMarker(v int64) *GetObjectAttributesInput {
-	s.PartNumberMarker = &v
-	return s
 }
 
 type GetObjectAttributesOutput struct {
@@ -12772,46 +12738,6 @@ type GetObjectAttributesOutput struct {
 	MimeType *string `type:"string"`
 }
 
-// String returns the string representation
-func (s GetObjectAttributesOutput) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s GetObjectAttributesOutput) GoString() string {
-	return s.String()
-}
-
-// SetETag sets the ETag field's value.
-func (s *GetObjectAttributesOutput) SetETag(v string) *GetObjectAttributesOutput {
-	s.ETag = &v
-	return s
-}
-
-// SetLastModified sets the LastModified field's value.
-func (s *GetObjectAttributesOutput) SetLastModified(v time.Time) *GetObjectAttributesOutput {
-	s.LastModified = &v
-	return s
-}
-
-// SetObjectParts sets the ObjectParts field's value.
-func (s *GetObjectAttributesOutput) SetObjectParts(v *GetObjectAttributesParts) *GetObjectAttributesOutput {
-	s.ObjectParts = v
-	return s
-}
-
-// SetObjectSize sets the ObjectSize field's value.
-func (s *GetObjectAttributesOutput) SetObjectSize(v int64) *GetObjectAttributesOutput {
-	s.ObjectSize = &v
-	return s
-}
-
-// SetStorageClass sets the StorageClass field's value.
-func (s *GetObjectAttributesOutput) SetStorageClass(v string) *GetObjectAttributesOutput {
-	s.StorageClass = &v
-	return s
-}
-
 
 type GetObjectAttributesParts struct {
 	_ struct{} `type:"structure"`
@@ -12827,52 +12753,6 @@ type GetObjectAttributesParts struct {
 	Parts []*ObjectPart `locationName:"Part" type:"list" flattened:"true"`
 
 	TotalPartsCount *int64 `locationName:"PartsCount" type:"integer"`
-}
-
-// String returns the string representation
-func (s GetObjectAttributesParts) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s GetObjectAttributesParts) GoString() string {
-	return s.String()
-}
-
-// SetIsTruncated sets the IsTruncated field's value.
-func (s *GetObjectAttributesParts) SetIsTruncated(v bool) *GetObjectAttributesParts {
-	s.IsTruncated = &v
-	return s
-}
-
-// SetMaxParts sets the MaxParts field's value.
-func (s *GetObjectAttributesParts) SetMaxParts(v int64) *GetObjectAttributesParts {
-	s.MaxParts = &v
-	return s
-}
-
-// SetNextPartNumberMarker sets the NextPartNumberMarker field's value.
-func (s *GetObjectAttributesParts) SetNextPartNumberMarker(v int64) *GetObjectAttributesParts {
-	s.NextPartNumberMarker = &v
-	return s
-}
-
-// SetPartNumberMarker sets the PartNumberMarker field's value.
-func (s *GetObjectAttributesParts) SetPartNumberMarker(v int64) *GetObjectAttributesParts {
-	s.PartNumberMarker = &v
-	return s
-}
-
-// SetParts sets the Parts field's value.
-func (s *GetObjectAttributesParts) SetParts(v []*ObjectPart) *GetObjectAttributesParts {
-	s.Parts = v
-	return s
-}
-
-// SetTotalPartsCount sets the TotalPartsCount field's value.
-func (s *GetObjectAttributesParts) SetTotalPartsCount(v int64) *GetObjectAttributesParts {
-	s.TotalPartsCount = &v
-	return s
 }
 
 type GetObjectInput struct {
@@ -18143,52 +18023,6 @@ type ObjectPart struct {
 	PartNumber *int64 `type:"integer"`
 
 	Size *int64 `type:"integer"`
-}
-
-// String returns the string representation
-func (s ObjectPart) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s ObjectPart) GoString() string {
-	return s.String()
-}
-
-// SetChecksumCRC32 sets the ChecksumCRC32 field's value.
-func (s *ObjectPart) SetChecksumCRC32(v string) *ObjectPart {
-	s.ChecksumCRC32 = &v
-	return s
-}
-
-// SetChecksumCRC32C sets the ChecksumCRC32C field's value.
-func (s *ObjectPart) SetChecksumCRC32C(v string) *ObjectPart {
-	s.ChecksumCRC32C = &v
-	return s
-}
-
-// SetChecksumSHA1 sets the ChecksumSHA1 field's value.
-func (s *ObjectPart) SetChecksumSHA1(v string) *ObjectPart {
-	s.ChecksumSHA1 = &v
-	return s
-}
-
-// SetChecksumSHA256 sets the ChecksumSHA256 field's value.
-func (s *ObjectPart) SetChecksumSHA256(v string) *ObjectPart {
-	s.ChecksumSHA256 = &v
-	return s
-}
-
-// SetPartNumber sets the PartNumber field's value.
-func (s *ObjectPart) SetPartNumber(v int64) *ObjectPart {
-	s.PartNumber = &v
-	return s
-}
-
-// SetSize sets the Size field's value.
-func (s *ObjectPart) SetSize(v int64) *ObjectPart {
-	s.Size = &v
-	return s
 }
 
 type ObjectVersion struct {
