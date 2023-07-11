@@ -3229,6 +3229,36 @@ func (c *S3) GetObjectAclWithContext(ctx aws.Context, input *GetObjectAclInput, 
 	return out, req.Send()
 }
 
+const opGetObjectAttributes = "GetObjectAttributes"
+
+func (c *S3) GetObjectAttributesRequest(input *GetObjectAttributesInput) (req *request.Request, output *GetObjectAttributesOutput) {
+	op := &request.Operation{
+		Name:       opGetObjectAttributes,
+		HTTPMethod: "GET",
+		HTTPPath:   "/{Bucket}/{Key+}?attributes",
+	}
+
+	if input == nil {
+		input = &GetObjectAttributesInput{}
+	}
+
+	output = &GetObjectAttributesOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+func (c *S3) GetObjectAttributes(input *GetObjectAttributesInput) (*GetObjectAttributesOutput, error) {
+	req, out := c.GetObjectAttributesRequest(input)
+	return out, req.Send()
+}
+
+func (c *S3) GetObjectAttributesWithContext(ctx aws.Context, input *GetObjectAttributesInput, opts ...request.Option) (*GetObjectAttributesOutput, error) {
+	req, out := c.GetObjectAttributesRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opGetObjectLegalHold = "GetObjectLegalHold"
 
 // GetObjectLegalHoldRequest generates a "aws/request.Request" representing the
@@ -12669,6 +12699,62 @@ func (s *GetObjectAclOutput) SetRequestCharged(v string) *GetObjectAclOutput {
 	return s
 }
 
+type GetObjectAttributesInput struct {
+	_ struct{} `type:"structure"`
+
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+
+	// Key is a required field
+	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
+
+	MaxParts *int64 `location:"header" locationName:"x-amz-max-parts" type:"integer"`
+
+	PartNumberMarker *int64 `location:"header" locationName:"x-amz-part-number-marker" type:"integer"`
+}
+
+func (s *GetObjectAttributesInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+type GetObjectAttributesOutput struct {
+	_ struct{} `type:"structure"`
+
+	ETag *string `type:"string"`
+
+	LastModified *time.Time `location:"header" locationName:"Last-Modified" type:"timestamp"`
+
+	ObjectParts *GetObjectAttributesParts `type:"structure"`
+
+	ObjectSize *int64 `type:"long"`
+
+	StorageClass *string `type:"string" enum:"StorageClass"`
+
+	Category *string `type:"string"`
+
+	MimeType *string `type:"string"`
+}
+
+
+type GetObjectAttributesParts struct {
+	_ struct{} `type:"structure"`
+
+	IsTruncated *bool `type:"boolean"`
+
+	MaxParts *int64 `type:"integer"`
+
+	NextPartNumberMarker *int64 `type:"integer"`
+
+	PartNumberMarker *int64 `type:"integer"`
+
+	Parts []*ObjectPart `locationName:"Part" type:"list" flattened:"true"`
+
+	TotalPartsCount *int64 `locationName:"PartsCount" type:"integer"`
+}
+
 type GetObjectInput struct {
 	_ struct{} `type:"structure"`
 
@@ -17921,6 +18007,22 @@ func (s ObjectLockRule) GoString() string {
 func (s *ObjectLockRule) SetDefaultRetention(v *DefaultRetention) *ObjectLockRule {
 	s.DefaultRetention = v
 	return s
+}
+
+type ObjectPart struct {
+	_ struct{} `type:"structure"`
+
+	ChecksumCRC32 *string `type:"string"`
+
+	ChecksumCRC32C *string `type:"string"`
+
+	ChecksumSHA1 *string `type:"string"`
+
+	ChecksumSHA256 *string `type:"string"`
+
+	PartNumber *int64 `type:"integer"`
+
+	Size *int64 `type:"integer"`
 }
 
 type ObjectVersion struct {
