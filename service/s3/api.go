@@ -17796,6 +17796,8 @@ type Object struct {
 
 	// The class of storage used to store the object.
 	StorageClass *string `type:"string" enum:"ObjectStorageClass"`
+
+	Category *string `type:"string"`
 }
 
 // String returns the string representation
