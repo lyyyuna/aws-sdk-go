@@ -12736,6 +12736,50 @@ type GetObjectAttributesOutput struct {
 	Category *string `type:"string"`
 
 	MimeType *string `type:"string"`
+
+	Expiration *GetObjectExpiration `type:"structure"`
+
+	Restore *GetObjectRestore `type:"structure"`
+
+	ObjectLock *GetObjectObjectLock `type:"structure"`
+
+	MetaSet *GetObjectMetaSet `type:"structure"`
+}
+
+type GetObjectExpiration struct {
+	_ struct{} `type:"structure"`
+
+	ExpiryDate *time.Time `locationName:"ExpiryDate" type:"timestamp"`
+}
+
+type GetObjectRestore struct {
+	_ struct{} `type:"structure"`
+
+	ExpiryDate *time.Time `locationName:"ExpiryDate" type:"timestamp"`
+
+	OngoingRequest *bool `type:"boolean"`
+}
+
+type GetObjectObjectLock struct {
+	_ struct{} `type:"structure"`
+
+	Mode *string `type:"string"`
+
+	RetainUntilDate *time.Time `locationName:"RetainUntilDate" type:"timestamp"`
+}
+
+type GetObjectMetaSet struct {
+	_ struct{} `type:"structure"`
+
+	Meta []*GetObjectMeta `locationName:"Meta" type:"list" flattened:"true"`
+}
+
+type GetObjectMeta struct {
+	_ struct{} `type:"structure"`
+
+	Key *string `type:"string"`
+
+	Value *string `type:"string"`
 }
 
 
@@ -17798,6 +17842,8 @@ type Object struct {
 	StorageClass *string `type:"string" enum:"ObjectStorageClass"`
 
 	Category *string `type:"string"`
+
+	MimeType *string `type:"string"`
 }
 
 // String returns the string representation
