@@ -39,7 +39,9 @@ type PutBucketStyleInput struct {
 
 	Bucket *string `location:"uri" locationName:"Bucket" type:"string"`
 
-	StyleConfiguration *StyleConfiguration `locationName:"StyleConfiguration" type:"structure"`
+	Name *string `location:"querystring" locationName:"name" type:"string"`
+
+	Style *Style `locationName:"Style" type:"structure"`
 }
 
 func (s *PutBucketStyleInput) getBucket() (v string) {
@@ -69,6 +71,8 @@ type Style struct {
 	PersistentEnable *bool `locationName:"PersistentEnable" type:"boolean"`
 
 	Command *string `locationName:"Command" type:"string"`
+
+	HideExt *bool `locationName:"HideExt" type:"boolean"`
 }
 
 const opGetBucketStyle = "GetBucketStyle"
@@ -100,6 +104,8 @@ type GetBucketStyleInput struct {
 	_ struct{} `type:"structure"`
 
 	Bucket *string `location:"uri" locationName:"Bucket" type:"string"`
+
+	Names []*string `location:"querystring" locationName:"name" type:"list"`
 }
 
 func (s *GetBucketStyleInput) getBucket() (v string) {
@@ -147,7 +153,7 @@ type DeleteBucketStyleInput struct {
 
 	Bucket *string `location:"uri" locationName:"Bucket" type:"string"`
 
-	Name *string `location:"querystring" locationName:"name" type:"string" required:"true"`
+	Names []*string `location:"querystring" locationName:"name" type:"list"`
 }
 
 func (s *DeleteBucketStyleInput) getBucket() (v string) {
