@@ -68,7 +68,7 @@ type Style struct {
 
 	Name *string `locationName:"Name" type:"string"`
 
-	PersistentEnable *bool `locationName:"PersistentEnable" type:"boolean"`
+	PersistenceStatus *string `locationName:"PersistenceStatus" type:"string"`
 
 	Command *string `locationName:"Command" type:"string"`
 
