@@ -13320,6 +13320,10 @@ type GetObjectOutput struct {
 	// to another object in the same bucket or to an external URL. Amazon S3 stores
 	// the value of this header in the object metadata.
 	WebsiteRedirectLocation *string `location:"header" locationName:"x-amz-website-redirect-location" type:"string"`
+
+	XTag *string `location:"header" locationName:"x-tag" type:"string"`
+
+	XBill *string `location:"header" locationName:"x-bill" type:"string"`
 }
 
 // String returns the string representation
@@ -14392,6 +14396,10 @@ type HeadObjectOutput struct {
 	// to another object in the same bucket or to an external URL. Amazon S3 stores
 	// the value of this header in the object metadata.
 	WebsiteRedirectLocation *string `location:"header" locationName:"x-amz-website-redirect-location" type:"string"`
+
+	XTag *string `location:"header" locationName:"x-tag" type:"string"`
+
+	XBill *string `location:"header" locationName:"x-bill" type:"string"`
 }
 
 // String returns the string representation
